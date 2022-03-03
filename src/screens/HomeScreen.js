@@ -1,9 +1,10 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, Text, Platform, ScrollView } from "react-native";
+import { SafeAreaView, StyleSheet, Text, Platform, ScrollView, TouchableOpacity } from "react-native";
+import Feather from "react-native-vector-icons/Feather";
 
 //Commponent
-import SearchBar from "../components/SearchBar";
 import BookList from "../components/BookList";
+
 import {
 	atomic_habbits,
 	attitude_is_everything,
@@ -36,6 +37,7 @@ import {
 	the_serial_killer,
 	the_silent_patient,
 } from "../resources/images/top_page_turners";
+
 const HomeScreen = ({ navigation }) => {
 	// const recommended_data = [
 	// 	{
@@ -265,7 +267,10 @@ const HomeScreen = ({ navigation }) => {
 	];
 	return (
 		<SafeAreaView style={styles.container}>
-			<SearchBar />
+			<TouchableOpacity style={styles.container1} onPress={() => navigation.navigate("SearchScreen")}>
+				<Feather style={styles.icon} name="search" color="#000" size={20} />
+				<Text style={styles.input}>Search..</Text>
+			</TouchableOpacity>
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<BookList show={false} title="Recommanded For You" data={recommended_data} />
 				<BookList show={false} title="Popular This Month" data={popular_this_month_data} />
@@ -283,5 +288,20 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingTop: Platform.Os === "ios" ? 0 : 30,
+	},
+	icon: {
+		margin: 5,
+	},
+	input: {
+		fontSize: 16,
+		width: "100%",
+	},
+	container1: {
+		flexDirection: "row",
+		alignItems: "center",
+		padding: 10,
+		margin: 10,
+		backgroundColor: "#ddd",
+		borderRadius: 10,
 	},
 });

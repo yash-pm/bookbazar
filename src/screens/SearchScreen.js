@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView, StyleSheet, Text, Platform } from "react-native";
+import SearchBar from "../components/SearchBar";
 
 const SearchScreen = () => {
+	useEffect(() => {
+		setTimeout(() => {}, 2000);
+	}, []);
+
 	return (
 		<SafeAreaView style={styles.container}>
-			<Text>SearchScreen</Text>
+			<SearchBar />
 		</SafeAreaView>
 	);
 };

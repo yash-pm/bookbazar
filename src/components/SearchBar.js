@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet, View, TextInput } from "react-native";
 import Feather from "react-native-vector-icons/Feather";
 
-const SearchBar = ({ SearchText }) => {
+const SearchBar = () => {
 	const [search, setSearch] = useState("");
 	return (
 		<View style={styles.container}>
@@ -12,6 +12,8 @@ const SearchBar = ({ SearchText }) => {
 				placeholder="Search.."
 				autoCapitalize="none"
 				autoCorrect={false}
+				autoFocus={true}
+				returnKeyType="search"
 				value={search}
 				onChangeText={(val) => setSearch(val)}
 			/>
