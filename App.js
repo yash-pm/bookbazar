@@ -1,11 +1,9 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import Feather from "react-native-vector-icons/Feather";
-
-const MainTabs = createMaterialBottomTabNavigator();
-const DecideStack = createStackNavigator();
 
 // Importing All Screens
 import HomeScreen from "./src/screens/HomeScreen";
@@ -13,6 +11,12 @@ import SearchScreen from "./src/screens/SearchScreen";
 import StoreScreen from "./src/screens/StoreScreen";
 import AccountScreen from "./src/screens/AccountScreen";
 import SplashScreen from "./src/screens/SplashScreen";
+
+import DrawerContent from "./src/components/Drawer";
+
+const MainTabs = createMaterialBottomTabNavigator();
+const DecideStack = createStackNavigator();
+const DrawerTabs = createDrawerNavigator();
 
 export default function App() {
 	const MainFlow = () => {
@@ -43,8 +47,8 @@ export default function App() {
 					}}
 				/>
 				<MainTabs.Screen
-					name="StoreScreen"
-					component={StoreScreen}
+					name="DrawerNav"
+					component={DrawerNav}
 					options={{
 						tabBarLabel: "Store",
 						tabBarIcon: ({ color }) => <Feather name="shopping-cart" color={color} size={20} />,
@@ -61,6 +65,19 @@ export default function App() {
 					}}
 				/>
 			</MainTabs.Navigator>
+		);
+	};
+
+	const DrawerNav = () => {
+		return (
+			<DrawerTabs.Navigator
+				screenOptions={{
+					headerShown: false,
+				}}
+				drawerContent={(props) => <DrawerContent {...props} />}
+			>
+				<DrawerTabs.Screen name="Store" component={StoreScreen} />
+			</DrawerTabs.Navigator>
 		);
 	};
 

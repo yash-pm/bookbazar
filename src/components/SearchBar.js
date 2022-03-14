@@ -4,15 +4,16 @@ import Feather from "react-native-vector-icons/Feather";
 
 const SearchBar = () => {
 	const [search, setSearch] = useState("");
+
 	return (
 		<View style={styles.container}>
 			<Feather style={styles.icon} name="search" color="#000" size={20} />
 			<TextInput
 				style={styles.input}
+				autoFocus={true}
 				placeholder="Search.."
 				autoCapitalize="none"
 				autoCorrect={false}
-				autoFocus={true}
 				returnKeyType="search"
 				value={search}
 				onChangeText={(val) => setSearch(val)}
